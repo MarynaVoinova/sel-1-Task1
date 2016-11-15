@@ -1,12 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Task1Setup
+﻿namespace Task1Setup
 {
-	using System;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using OpenQA.Selenium;
-	using OpenQA.Selenium.Support.UI;
 	using NUnit.Framework;
 	using OpenQA.Selenium.Chrome;
 
@@ -30,7 +25,6 @@ namespace Task1Setup
 			}
 
 			[TearDown]
-
 			public void stop()
 			{
 				driver.Quit();
