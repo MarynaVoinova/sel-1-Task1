@@ -24,6 +24,7 @@ namespace Task1Setup
 			driver.Url = "http://localhost:8080/litecart/admin/";
 			driver.FindElement(By.Name("username")).SendKeys("admin");
 			driver.FindElement(By.Name("password")).SendKeys("admin");
+			driver.FindElement(By.Name("login")).Click();
 		}
 
 		[TearDown]
