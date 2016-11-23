@@ -13,7 +13,7 @@
 			private IWebDriver driver;
 
 			[SetUp]
-			public void start()
+			public void Start()
 			{
 				driver = new ChromeDriver();
 			}
@@ -25,7 +25,7 @@
 			}
 
 			[TearDown]
-			public void stop()
+			public void Stop()
 			{
 				driver.Quit();
 				driver = null;

@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using System;
 
 namespace Task1Setup
 {
@@ -10,7 +8,6 @@ namespace Task1Setup
 	public class LoginTest
 	{
 		private IWebDriver driver;
-		private WebDriverWait wait;
 
 		[SetUp]
 		public void Start()
