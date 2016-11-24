@@ -68,6 +68,7 @@
     <Compile Include="LoginTest.cs" />
     <Compile Include="MyFirstTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StickerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
