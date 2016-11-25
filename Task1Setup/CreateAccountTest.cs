@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -25,7 +23,6 @@ namespace Task1Setup
 			driver.FindElement(By.Name("password")).SendKeys("admin");
 			driver.FindElement(By.Name("login")).Click();
 			driver.FindElements(By.Name("login"));
-
 		}
 
 		[TearDown]
