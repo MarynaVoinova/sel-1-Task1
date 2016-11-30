@@ -66,12 +66,17 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BrowseMenuTest.cs" />
+    <Compile Include="CheckProductTest.cs" />
     <Compile Include="CreateAccountTest.cs" />
     <Compile Include="EditCountryPage.cs" />
     <Compile Include="GeoZonesEditPage.cs" />
     <Compile Include="GeoZonesPage.cs" />
     <Compile Include="LoginTest.cs" />
     <Compile Include="MyFirstTest.cs" />
+    <Compile Include="Navigator.cs" />
+    <Compile Include="ProductDetails.cs" />
+    <Compile Include="ProductDetailsPage.cs" />
+    <Compile Include="ProductsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortingCountriesZonesTest.cs" />
     <Compile Include="StickerTest.cs" />
