@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium;
-using System;
+﻿using System;
+using OpenQA.Selenium;
 
-namespace Task1Setup
+namespace Task1Setup.PageObjects
 {
 	public class ProductDetailsPage
 	{

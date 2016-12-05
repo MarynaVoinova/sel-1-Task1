@@ -2,7 +2,7 @@
 using System.Linq;
 using OpenQA.Selenium;
 
-namespace Task1Setup
+namespace Task1Setup.PageObjects
 {
 	public class EditCountryPage
 	{
@@ -30,7 +30,6 @@ namespace Task1Setup
 				{
 					zonesNames.Add(zone[0].GetAttribute("value"));
 				}
-
 			}
 			return zonesNames;
 		}

@@ -1,10 +1,10 @@
-﻿namespace Task1Setup
-{
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-	using OpenQA.Selenium;
-	using NUnit.Framework;
-	using OpenQA.Selenium.Chrome;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
+namespace Task1Setup
+{
 	namespace csharp_example
 	{
 		[TestClass]

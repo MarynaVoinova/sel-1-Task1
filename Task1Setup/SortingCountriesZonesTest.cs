@@ -4,6 +4,7 @@ using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Task1Setup.PageObjects;
 
 namespace Task1Setup
 {

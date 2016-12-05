@@ -39,8 +39,10 @@
       <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
     <Reference Include="WebDriver, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.0.0\lib\net40\WebDriver.dll</HintPath>
       <Private>True</Private>
@@ -65,24 +67,45 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AddProductTest.cs" />
+    <Compile Include="ElementAdapters\RadioButton.cs" />
+    <Compile Include="ElementAdapters\RadioButtonGroup.cs" />
+    <Compile Include="ElementAdapters\SearchInputBox.cs" />
+    <Compile Include="PageObjects\AdminCatalogPage.cs" />
+    <Compile Include="PageObjects\AdminPage.cs" />
     <Compile Include="BrowseMenuTest.cs" />
+    <Compile Include="ElementAdapters\CheckBox.cs" />
     <Compile Include="CheckProductTest.cs" />
+    <Compile Include="ElementAdapters\Button.cs" />
+    <Compile Include="PageObjects\CreateAccountPage.cs" />
     <Compile Include="CreateAccountTest.cs" />
-    <Compile Include="EditCountryPage.cs" />
-    <Compile Include="GeoZonesEditPage.cs" />
-    <Compile Include="GeoZonesPage.cs" />
+    <Compile Include="PageObjects\EditCatalogPage.cs" />
+    <Compile Include="PageObjects\EditCountryPage.cs" />
+    <Compile Include="PageObjects\GeneralTab.cs" />
+    <Compile Include="PageObjects\GeoZonesEditPage.cs" />
+    <Compile Include="PageObjects\GeoZonesPage.cs" />
+    <Compile Include="ElementAdapters\InputBox.cs" />
+    <Compile Include="PageObjects\InformationTab.cs" />
+    <Compile Include="PageObjects\LoginPage.cs" />
     <Compile Include="LoginTest.cs" />
     <Compile Include="MyFirstTest.cs" />
-    <Compile Include="Navigator.cs" />
-    <Compile Include="ProductDetails.cs" />
-    <Compile Include="ProductDetailsPage.cs" />
-    <Compile Include="ProductsPage.cs" />
+    <Compile Include="PageObjects\Navigator.cs" />
+    <Compile Include="PageObjects\PricesTab.cs" />
+    <Compile Include="PageObjects\ProductDetails.cs" />
+    <Compile Include="PageObjects\ProductDetailsPage.cs" />
+    <Compile Include="PageObjects\ProductsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortingCountriesZonesTest.cs" />
     <Compile Include="StickerTest.cs" />
+    <Compile Include="Account.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\duck.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -2,7 +2,7 @@
 using System.Linq;
 using OpenQA.Selenium;
 
-namespace Task1Setup
+namespace Task1Setup.PageObjects
 {
 	class GeoZonesEditPage
 	{
