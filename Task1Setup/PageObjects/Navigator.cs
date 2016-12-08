@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace Task1Setup.PageObjects
 {
@@ -31,6 +33,16 @@ namespace Task1Setup.PageObjects
 		{
 			adminPage.GoToCatalog();
 			return new AdminCatalogPage(driver);
+		}
+
+		public CartPage ToCartPage()
+		{
+			var checkout = driver.FindElement(By.CssSelector("a[href*=checkout]"));
+			checkout.Click();
+			WebDriverWait wait =new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+			wait.Until(ExpectedConditions.TitleContains("Checkout"));
+			wait = new WebDriverWait(driver, TimeSpan.Zero);
+			return new CartPage(driver);
 		}
 
 	}

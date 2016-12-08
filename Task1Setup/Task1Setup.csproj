@@ -71,12 +71,17 @@
     <Compile Include="ElementAdapters\RadioButton.cs" />
     <Compile Include="ElementAdapters\RadioButtonGroup.cs" />
     <Compile Include="ElementAdapters\SearchInputBox.cs" />
+    <Compile Include="Extensions\PresnseOfElement.cs" />
+    <Compile Include="Extensions\WebElementExtensions.cs" />
     <Compile Include="PageObjects\AdminCatalogPage.cs" />
     <Compile Include="PageObjects\AdminPage.cs" />
     <Compile Include="BrowseMenuTest.cs" />
     <Compile Include="ElementAdapters\CheckBox.cs" />
     <Compile Include="CheckProductTest.cs" />
     <Compile Include="ElementAdapters\Button.cs" />
+    <Compile Include="PageObjects\BasePage.cs" />
+    <Compile Include="PageObjects\Cart.cs" />
+    <Compile Include="PageObjects\CartPage.cs" />
     <Compile Include="PageObjects\CreateAccountPage.cs" />
     <Compile Include="CreateAccountTest.cs" />
     <Compile Include="PageObjects\EditCatalogPage.cs" />
@@ -98,6 +103,7 @@
     <Compile Include="SortingCountriesZonesTest.cs" />
     <Compile Include="StickerTest.cs" />
     <Compile Include="Account.cs" />
+    <Compile Include="CartTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

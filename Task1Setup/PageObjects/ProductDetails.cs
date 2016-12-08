@@ -1,4 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Linq;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using Task1Setup.ElementAdapters;
+using Task1Setup.Extensions;
 
 namespace Task1Setup.PageObjects
 {
@@ -19,35 +24,65 @@ namespace Task1Setup.PageObjects
 		public string RegularPriceFontDecoration { get; private set; }
 		public string CampaignPriceFontDecoration { get; private set; }
 
+		public SelectElement DuckSize { get; private set; }
+
+		public Button AddToCurtBtn { get; private set; }
+
 		public ProductDetails(IWebDriver driver, IWebElement productWebElement, bool isProductDetailsPage)
 		{
 			product = productWebElement;
 			this.driver = driver;
 			if (!isProductDetailsPage)
 			{
-				Name = product.FindElement(By.ClassName("name")).GetAttribute("textContent");
+				Name = driver.FindElement(By.ClassName("name")).GetAttribute("textContent");
 			}
 			else
 			{
-				Name = product.FindElement(By.CssSelector("h1.title")).GetAttribute("textContent");
+				Name = driver.FindElement(By.CssSelector("h1.title")).GetAttribute("textContent");
 			}
 
 			SetProductDetailsProperties();
-
 		}
 
 		private void SetProductDetailsProperties()
 		{
-			RegularPriceWebElement = product.FindElement(By.ClassName("regular-price"));
-			CampaignPriceWebElement = product.FindElement(By.ClassName("campaign-price"));
-			RegularPrice = int.Parse(GetRegularPrice());
-			CampaignPrice = int.Parse(CampaignPriceWebElement.GetAttribute("textContent").Remove(0, 1));
-			RegularPriceColor = RegularPriceWebElement.GetCssValue("color");
-			CampaignPriceColor = CampaignPriceWebElement.GetCssValue("color");
-			RegularPriceFontWeight = RegularPriceWebElement.GetCssValue("font-weight");
-			CampaignPriceFontWeight = CampaignPriceWebElement.GetCssValue("font-weight");
-			RegularPriceFontDecoration = RegularPriceWebElement.TagName;//TagName("s");
-			CampaignPriceFontDecoration = CampaignPriceWebElement.TagName;
+			//RegularPriceWebElement = driver.FindElementOrDefault(By.ClassName("regular-price"));
+			var regularPriceWebElements = driver.FindElements(By.ClassName("regular-price")).ToList();
+			if (regularPriceWebElements.Count != 0)
+			{
+				RegularPriceWebElement = regularPriceWebElements.First();
+				RegularPrice = int.Parse(GetRegularPrice());
+				RegularPriceColor = RegularPriceWebElement.GetCssValue("color");
+				RegularPriceFontWeight = RegularPriceWebElement.GetCssValue("font-weight");
+				RegularPriceFontDecoration = RegularPriceWebElement.TagName;//TagName("s");
+			}
+			//CampaignPriceWebElement = driver.FindElementOrDefault(By.ClassName("campaign-price"));
+			var campaignPriceWebElements = driver.FindElements(By.ClassName("campaign-price")).ToList();
+			//if (CampaignPriceWebElement != null)
+			if (campaignPriceWebElements.Count != 0)
+			{
+				CampaignPriceWebElement = campaignPriceWebElements.First();
+				CampaignPriceColor = CampaignPriceWebElement.GetCssValue("color");
+				CampaignPriceFontWeight = CampaignPriceWebElement.GetCssValue("font-weight");
+				CampaignPriceFontDecoration = CampaignPriceWebElement.TagName;
+				CampaignPrice = int.Parse(CampaignPriceWebElement.GetAttribute("textContent").Remove(0, 1));
+			}
+			//var duckSize = driver.FindElementOrDefault(By.CssSelector("[name='options[Size]']"));
+			driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.Zero);
+			var duckSize = driver.FindElements(By.CssSelector("[name='options[Size]']")).ToList();
+			if (duckSize.Count != 0)
+			{
+				DuckSize = new SelectElement(duckSize.First());
+				//DuckSize.SelectByIndex(2);
+				DuckSize.SelectByValue("Small");
+			}
+			//var addToCurtButtonEl = driver.FindElementOrDefault(By.Name("add_cart_product"));
+			//var addToCurtButtonEl = WebElementExtensions.FindElementOrDefault(product, By.Name("add_cart_product"));
+			var addToCurtButtonEl = product.FindElements(By.Name("add_cart_product")).FirstOrDefault();
+			if (addToCurtButtonEl != null)
+			{
+				AddToCurtBtn = new Button(addToCurtButtonEl);
+			}
 		}
 
 		private string GetRegularPrice()
