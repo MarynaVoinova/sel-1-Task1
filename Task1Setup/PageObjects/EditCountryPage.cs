@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using OpenQA.Selenium;
+using Task1Setup.ElementAdapters;
 
 namespace Task1Setup.PageObjects
 {
@@ -8,9 +9,11 @@ namespace Task1Setup.PageObjects
 	{
 		private IWebElement zoneTable;
 		private int zoneColumn =3;
+		private IWebDriver driver;
 
 		public EditCountryPage(IWebDriver driver)
 		{
+			this.driver = driver;
 			zoneTable = driver.FindElement(By.CssSelector("#table-zones"));
 		}
 
@@ -32,6 +35,11 @@ namespace Task1Setup.PageObjects
 				}
 			}
 			return zonesNames;
+		}
+
+		public List<Button> GetExternalLinks()
+		{
+			return driver.FindElements(By.CssSelector("[class='fa fa-external-link']")).Select(link=>new Button(link)).ToList();
 		}
 	}
 }

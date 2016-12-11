@@ -28,6 +28,12 @@ namespace Task1Setup.PageObjects
 			GetMainMenuElements().Find(el => el.GetAttribute("textContent") == "Catalog").Click();
 		}
 
+		public CountriesPage GoToCountries()
+		{
+			GetMainMenuElements().Find(el => el.GetAttribute("textContent") == "Countries").Click();
+			return new CountriesPage(driver);
+		}
+
 		private List<IWebElement> GetMainMenuElements()
 		{
 			return driver.FindElements(By.CssSelector("li#app- > a span.name")).ToList();
