@@ -25,7 +25,8 @@ namespace Task1Setup.PageObjects
 
 		public void GoToCatalog()
 		{
-			GetMainMenuElements().Find(el => el.GetAttribute("textContent") == "Catalog").Click();
+			var temp = GetMainMenuElements().Find(el => el.GetAttribute("textContent") == "Catalog");
+			temp.Click();
 		}
 
 		public CountriesPage GoToCountries()

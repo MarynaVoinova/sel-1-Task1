@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using OpenQA.Selenium;
 using Task1Setup.ElementAdapters;
 
@@ -12,6 +14,7 @@ namespace Task1Setup.PageObjects
 
 		private IWebElement CatalogDataTable { get; set; }
 		private IWebElement DataTableFooter { get; set; }
+
 
 		public AdminCatalogPage(IWebDriver driver)
 		{
@@ -54,6 +57,15 @@ namespace Task1Setup.PageObjects
 				return Int32.Parse(footer.Substring(startIndex + 1));
 			}
 			return 0;
+		}
+
+		public List<Button> GetAllProductslinkInCategory(int numberOfCategory)
+		{
+			var category = driver.FindElements(By.CssSelector($".row td:nth-child(3) a[href$='category_id={numberOfCategory}']")).ToList();
+			category[numberOfCategory-1].Click();
+			var products = driver.FindElements(By.CssSelector($".row td:nth-child(3) a[href*='category_id={numberOfCategory}&product_id=']")).ToList();
+			return products.Select(el => new Button(el)).ToList();
+
 		}
 	}
 }

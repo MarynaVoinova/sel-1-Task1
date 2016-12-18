@@ -26,7 +26,7 @@ namespace Task1Setup.PageObjects
 			RemoveButtonsList = driver.FindElements(By.Name("remove_cart_item")).ToList();
 		}
 
-		public void DeleteAllProductsInCart()
+		public void  DeleteAllProductsInCart()
 		{
 			ProductsWithShortcut[0].Click();
 			while (RemoveButtonsList.Count > 0)
