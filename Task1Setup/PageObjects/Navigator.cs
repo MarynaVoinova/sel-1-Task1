@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Chrome;
 
 namespace Task1Setup.PageObjects
 {
@@ -8,6 +9,11 @@ namespace Task1Setup.PageObjects
 	{
 		IWebDriver driver;
 
+		public Navigator()
+		{
+			driver = new ChromeDriver();
+			driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.Zero);
+		}
 		public Navigator(IWebDriver driver)
 		{
 			this.driver = driver;
@@ -43,6 +49,11 @@ namespace Task1Setup.PageObjects
 			wait.Until(ExpectedConditions.TitleContains("Checkout"));
 			wait = new WebDriverWait(driver, TimeSpan.Zero);
 			return new CartPage(driver);
+		}
+		public void StopDriver()
+		{
+			driver.Quit();
+			driver = null;
 		}
 
 	}

@@ -1,22 +1,16 @@
-﻿using System;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using NUnit.Framework;
 using Task1Setup.PageObjects;
 
 namespace Task1Setup
 {
 	public class CartTest
 	{
-		private IWebDriver driver;
 		private Navigator navigator;
 
 		[SetUp]
 		public void Start()
 		{
-			driver = new ChromeDriver();
-			driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.Zero);
-			navigator = new Navigator(driver);
+			navigator = new Navigator();
 		}
 
 		[Test]
@@ -35,14 +29,12 @@ namespace Task1Setup
 			}
 			var cartPage = navigator.ToCartPage();
 			cartPage.DeleteAllProductsInCart();
-
 		}
 
 		[TearDown]
 		public void Stop()
 		{
-			driver.Quit();
-			driver = null;
+			navigator.StopDriver();
 		}
 	}
 }
